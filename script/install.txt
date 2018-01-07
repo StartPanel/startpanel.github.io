@@ -1,0 +1,62 @@
+####
+# StartPanel Installer
+# (c) BrightSkyz and SirHyperNova
+# Released under a MIT license
+#
+# https://github.com/StartPanel/StartPanel
+####
+
+echo "Installing web server and other utilites."
+sudo apt update
+sudo apt install -y nano apache2 apt-transport-https ca-certificates wget zip unzip
+
+echo "Adding Docker keys to apt sources."
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
+
+echo "Updating package lists."
+sudo apt-get update
+
+echo "Installing linux-image-extra-$(uname -r) and linux-image-extra-virtual."
+sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+
+echo "Installing docker-engine."
+sudo apt-get install -y docker-engine
+
+echo "Starting Docker service."
+sudo service docker start
+
+echo "Installing MySQL server"
+sudo apt-get install -y mysql-server
+
+echo "Installing phpMyAdmin"
+sudo apt-get install -y phpmyadmin
+
+echo "Making /var/www/startpanel."
+mkdir /var/www/startpanel
+
+echo "Downloading StartPanel."
+cd /var/www/startpanel
+wget https://github.com/StartPanel/StartPanel/archive/master.zip -O startpanel.zip
+unzip startpanel.zip
+
+echo "Updating apache's ports.conf"
+sed -i '/Listen 80/aListen 4041' /etc/apache2/ports.conf
+echo "Creating startpanel.conf"
+echo "
+		<VirtualHost *:4041>
+			DocumentRoot /var/www/startpanel
+			<Directory />
+				AllowOverride All
+			</Directory>
+			<Directory $rootDir>
+				Options Indexes FollowSymLinks MultiViews
+				AllowOverride all
+				Require all granted
+			</Directory>
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+		</VirtualHost>" > /etc/apache2/sites-available/startpanel.conf
+echo "Enabling startpanel.conf and reloading apache."
+a2ensite startpanel.conf
+/etc/init.d/apache2 restart
