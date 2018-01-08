@@ -39,34 +39,3 @@ sudo apt-get install phpmyadmin -y
 
 echo "Making /var/servers"
 mkdir /var/servers
-
-echo "Making /var/www/startpanel"
-mkdir /var/www/startpanel
-
-echo "Downloading StartPanel."
-cd /var/www/startpanel
-wget https://github.com/StartPanel/StartPanel/archive/master.zip -O startpanel.zip
-unzip startpanel.zip
-
-echo "Updating apache's ports.conf"
-sed -i '/Listen 80/aListen 4041' /etc/apache2/ports.conf
-echo "Creating startpanel.conf"
-echo "
-<VirtualHost *:4041>
-	DocumentRoot /var/www/startpanel
-	<Directory />
-		AllowOverride All
-	</Directory>
-	<Directory /var/www/startpanel>
-		Options Indexes FollowSymLinks MultiViews
-		AllowOverride all
-		Require all granted
-	</Directory>
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>" > /etc/apache2/sites-available/startpanel.conf
-echo "Enabling startpanel.conf and reloading apache."
-a2ensite startpanel.conf
-/etc/init.d/apache2 restart
-
-echo "Done."
