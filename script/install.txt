@@ -8,7 +8,11 @@
 
 echo "Installing web server and other utilites."
 sudo apt update
-sudo apt install -y nano apache2 apt-transport-https ca-certificates wget zip unzip
+sudo apt install nano apache2 apt-transport-https ca-certificates wget zip unzip -y
+sudo apt install php7.0 php7.0-fpm php7.0-mysql libapache2-mod-php7.0 -y
+
+echo "Enabling PHP module for Apache."
+sudo a2enmod php7.0
 
 echo "Adding Docker keys to apt sources."
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -18,19 +22,19 @@ echo "Updating package lists."
 sudo apt-get update
 
 echo "Installing linux-image-extra-$(uname -r) and linux-image-extra-virtual."
-sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
 
 echo "Installing docker-engine."
-sudo apt-get install -y docker-engine
+sudo apt-get install docker-engine -y
 
 echo "Starting Docker service."
 sudo service docker start
 
 echo "Installing MySQL server"
-sudo apt-get install -y mysql-server
+sudo apt-get install mysql-server -y
 
 echo "Installing phpMyAdmin"
-sudo apt-get install -y phpmyadmin
+sudo apt-get instal phpmyadmin -y
 
 echo "Making /var/www/startpanel."
 mkdir /var/www/startpanel
