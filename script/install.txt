@@ -9,7 +9,8 @@
 echo "Installing web server and other utilites."
 sudo apt update
 sudo apt install nano apache2 apt-transport-https ca-certificates wget zip unzip -y
-sudo apt install php7.0 php7.0-fpm php7.0-mysql libapache2-mod-php7.0 -y
+sudo apt install php7.0 php7.0-fpm php7.0-mysql php7.0-cli libapache2-mod-php7.0 -y
+sudo apt install libssh2-1 php-ssh2 -y
 
 echo "Enabling PHP module for Apache."
 sudo a2enmod php7.0
