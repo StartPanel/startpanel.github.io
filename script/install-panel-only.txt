@@ -22,33 +22,49 @@ echo "Installing phpMyAdmin"
 sudo apt-get install phpmyadmin -y
 
 echo "Making /var/www/startpanel"
-mkdir /var/www/startpanel
+sudo mkdir /var/www/startpanel
 
 echo "Downloading StartPanel."
 cd /var/www/startpanel
-wget https://github.com/StartPanel/StartPanel/archive/master.zip -O startpanel.zip
-unzip startpanel.zip
-mv /var/www/startpanel/StartPanel-master/* /var/www/startpanel/
+sudo wget https://github.com/StartPanel/StartPanel/archive/master.zip -O startpanel.zip
+echo "Unzipping StartPanel.zip"
+sudo unzip startpanel.zip
+echo "Copying StartPanel to correct direcotory."
+sudo cp -r /var/www/startpanel/StartPanel-master/. /var/www/startpanel/
+echo "Removing temporary files."
+sudo rm -r /var/www/startpanel/StartPanel-master/
+sudo rm -r /var/www/startpanel/startpanel.zip
+echo "Setting permissions."
+sudo chmod 775 /var/www/startpanel/
 
 echo "Updating apache's ports.conf"
-sed -i '/Listen 80/aListen 4041' /etc/apache2/ports.conf
+sudo sed -i '/Listen 80/aListen 4041' /etc/apache2/ports.conf
 echo "Creating startpanel.conf"
 echo "
 <VirtualHost *:4041>
 	DocumentRoot /var/www/startpanel
-	<Directory />
-		AllowOverride All
-	</Directory>
 	<Directory /var/www/startpanel>
-		Options Indexes FollowSymLinks MultiViews
+		Options +FollowSymLinks +MultiViews
+		Options -Indexes
 		AllowOverride all
 		Require all granted
 	</Directory>
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	ErrorLog ${APACHE_LOG_DIR}/startpanel-error.log
+	CustomLog ${APACHE_LOG_DIR}/startpanel-access.log combined
 </VirtualHost>" > /etc/apache2/sites-available/startpanel.conf
 echo "Enabling startpanel.conf and reloading apache."
-a2ensite startpanel.conf
+sudo a2ensite startpanel.conf
+sudo a2enmod rewrite
 /etc/init.d/apache2 restart
 
-echo "Done."
+echo "Installer has finished."
+echo "-------------------------------------------------"
+echo "- StartPanel Install                            -"
+echo "- ------------------                            -"
+echo "- StartPanel has finished installing. You can   -"
+echo "- now access it with the following information  -"
+echo "- to finish installing the panel. Thank you for -"
+echo "- choosing StartPanel to manage your servers.   -"
+echo "- ------------------                            -"
+echo "- URL: http://your_server_ip:4041               -"
+echo "-------------------------------------------------"

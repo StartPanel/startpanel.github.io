@@ -38,4 +38,14 @@ echo "Installing phpMyAdmin"
 sudo apt-get install phpmyadmin -y
 
 echo "Making /var/servers"
-mkdir /var/servers
+sudo mkdir /var/servers
+
+echo "Installer has finished."
+echo "-------------------------------------------------"
+echo "- StartPanel Node Install                       -"
+echo "- ------------------                            -"
+echo "- StartPanel has finished installing. You can   -"
+echo "- now link it with the panel with the root SSH  -"
+echo "- account for this server. Thanks for choosing  -"
+echo "- StartPanel to manage your servers.            -"
+echo "-------------------------------------------------"
