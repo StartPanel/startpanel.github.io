@@ -47,6 +47,7 @@ echo "Downloading StartPanel."
 cd /var/www/startpanel
 wget https://github.com/StartPanel/StartPanel/archive/master.zip -O startpanel.zip
 unzip startpanel.zip
+mv /var/www/startpanel/StartPanel-master/* /var/www/startpanel/
 
 echo "Updating apache's ports.conf"
 sed -i '/Listen 80/aListen 4041' /etc/apache2/ports.conf
