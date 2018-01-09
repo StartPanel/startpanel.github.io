@@ -1,0 +1,50 @@
+####
+# StartPanel Update
+# (c) BrightSkyz and SirHyperNova
+# Released under a MIT license
+#
+# https://github.com/StartPanel/StartPanel
+####
+
+echo "Removing old backup files."
+sudo rm -r /var/www/startpanel-backup/
+echo "Backing up StartPanel to /var/www/startpanel-backup"
+sudo mkdir -p /var/www/startpanel-backup
+echo "Copying StartPanel to backup directory."
+sudo cp -r /var/www/startpanel/. /var/www/startpanel-backup/
+
+echo "Downloading latest edge release of StartPanel."
+cd /var/www/startpanel
+sudo wget https://github.com/StartPanel/StartPanel/archive/master.zip -O startpanel.zip
+echo "Unzipping StartPanel.zip"
+sudo unzip startpanel.zip
+echo "Copying StartPanel to correct directory."
+sudo cp -r /var/www/startpanel/StartPanel-master/. /var/www/startpanel/
+echo "Removing temporary files."
+sudo rm -r /var/www/startpanel/StartPanel-master/
+sudo rm -r /var/www/startpanel/startpanel.zip
+echo "Setting permissions."
+sudo chmod -R 777 /var/www/startpanel/core
+echo "Restoring config.php and install.lock"
+sudo cp -r /var/www/startpanel-backup/core/config.php /var/www/startpanel/core/config.php
+
+/etc/init.d/apache2 restart
+
+echo "Update has finished."
+echo "-------------------------------------------------"
+echo "- StartPanel Install                            -"
+echo "- ------------------                            -"
+echo "- NOTE: The installed release was an edge       -"
+echo "- release. These releases can be un-tested and  -"
+echo "- can contain bugs. Do not use this on a        -"
+echo "- production site. If you want to restore the   -"
+echo "- backup, it is stored in the directory listed  -"
+echo "- here: /var/www/startpanel-backup              -"
+echo "- ------------------                            -"
+echo "- StartPanel has finished updating. You can     -"
+echo "- now access it with the following information  -"
+echo "- to access the updated panel. Thank you for    -"
+echo "- choosing StartPanel to manage your servers.   -"
+echo "- ------------------                            -"
+echo "- URL: http://your_server_ip:4041               -"
+echo "-------------------------------------------------"
