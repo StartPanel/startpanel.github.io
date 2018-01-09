@@ -46,6 +46,15 @@ h4, h5, h6, p, a {
 .button:active {
     background-color: #3e72ff;
 }
+a {
+	color: #545454;
+}
+a:hover {
+	color: #545454;
+}
+a:visited {
+	color: #545454;
+}
 .footer-link {
     color: #fff;
     -webkit-transition-duration: 0.3s;
@@ -128,6 +137,9 @@ h4, h5, h6, p, a {
 	}
 }
 @media screen and (max-width: 900px) {
+	.nav-right {
+		float: none;
+	}
 	.navbar.responsive {
 		position: relative;
 	}
