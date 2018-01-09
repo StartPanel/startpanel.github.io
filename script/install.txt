@@ -26,10 +26,13 @@ echo "Installing linux-image-extra-$(uname -r) and linux-image-extra-virtual."
 sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
 
 echo "Installing docker-engine."
-sudo apt-get install docker-engine -y
+sudo apt-get install docker-engine docker.io -y
 
 echo "Starting Docker service."
 sudo service docker start
+
+echo "Downloading docker image."
+sudo docker pull nimmis/spigot
 
 echo "Installing MySQL server"
 sudo apt-get install mysql-server -y
