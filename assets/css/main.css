@@ -131,6 +131,10 @@ a:visited {
 	}
 }
 @media screen and (max-width: 900px) {
+	.header {
+    	padding: 35px 40px;
+    	padding-bottom: 50px;
+	}
 	.navbar a:not(:first-child) {
 		display: none;
 	}
