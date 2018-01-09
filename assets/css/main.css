@@ -97,6 +97,9 @@ a:visited {
 .nav-right {
     float: right;
 }
+.nav-right a {
+	float: left;
+}
 /* Navbar */
 .navbar {
 	overflow: hidden;
@@ -138,6 +141,9 @@ a:visited {
 }
 @media screen and (max-width: 900px) {
 	.nav-right {
+		float: none;
+	}
+	.nav-right a {
 		float: none;
 	}
 	.navbar.responsive {
