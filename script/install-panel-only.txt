@@ -29,13 +29,13 @@ cd /var/www/startpanel
 sudo wget https://github.com/StartPanel/StartPanel/archive/master.zip -O startpanel.zip
 echo "Unzipping StartPanel.zip"
 sudo unzip startpanel.zip
-echo "Copying StartPanel to correct direcotory."
+echo "Copying StartPanel to correct directory."
 sudo cp -r /var/www/startpanel/StartPanel-master/. /var/www/startpanel/
 echo "Removing temporary files."
 sudo rm -r /var/www/startpanel/StartPanel-master/
 sudo rm -r /var/www/startpanel/startpanel.zip
 echo "Setting permissions."
-sudo chmod 775 /var/www/startpanel/
+sudo chmod -R 777 /var/www/startpanel/core
 
 echo "Updating apache's ports.conf"
 sudo sed -i '/Listen 80/aListen 4041' /etc/apache2/ports.conf
