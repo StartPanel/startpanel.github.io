@@ -4,25 +4,25 @@
     if (isset($page_name)) {
         $page_name_final = $page_name;
     }
-	if (isset($page_subhead)) {
+    if (isset($page_subhead)) {
         $page_subhead_final = $page_subhead;
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	    <!--[if lt IE 9]>
+        <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <![endif]-->
         <title><?php echo $page_name_final; ?> - StartPanel</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <meta name="title" content="<?php echo $page_name_final; ?> - StartPanel">
         <meta name="description" content="<?php echo $page_subhead_final; ?>">
         <meta name="keywords" content="startpanel, start, panel, minecraft, admin, management, simple, sleek, powerful free, open, source, opensource">
-        
+
         <link href="/assets/css/grid.css" rel="stylesheet">
         <link href="/assets/css/icons.css" rel="stylesheet">
         <link href="/assets/css/main.css" rel="stylesheet">
