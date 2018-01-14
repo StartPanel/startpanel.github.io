@@ -87,13 +87,6 @@ a:visited {
     text-decoration: none;
     float: left;
 }
-.nav-item:hover {
-   color: #e2e2e2;
-}
-.nav-item:active {
-   color: #333;
-   padding-top: 7px;
-}
 .nav-right {
     float: right;
 }
@@ -111,14 +104,10 @@ a:visited {
 	padding: 14px 16px;
 	text-decoration: none;
 }
-.navbar a:hover {
-	/*background-color: #ddd;
-	color: #fff;*/
-}
 .navbar .active {
-	background-color: #4CAF50;
-	color: white;
+	color: #fff;
 	border-radius: 5px;
+    border-color: #fff;
 }
 .navbar .icon {
 	display: none;
