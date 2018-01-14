@@ -1,11 +1,17 @@
 <?php
     $page_name_final = "Untitled";
-    $page_subhead_final = "Subheading not set.";
+    $page_subhead_title_final = " Subhead title not set.";
+    $page_subhead_text_final = "Subheading not set.";
     if (isset($page_name)) {
         $page_name_final = $page_name;
+        if ($page_name == "Home") {
+            $page_subhead_name_final = "StartPanel";
+        } else {
+            $page_subhead_name_final = $page_name;
+        }
     }
     if (isset($page_subhead)) {
-        $page_subhead_final = $page_subhead;
+        $page_subhead_text_final = $page_subhead;
     }
 ?>
 <!DOCTYPE html>
@@ -20,7 +26,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="title" content="<?php echo $page_name_final; ?> - StartPanel">
-        <meta name="description" content="<?php echo $page_subhead_final; ?>">
+        <meta name="description" content="<?php echo $page_subhead_text_final; ?>">
         <meta name="keywords" content="startpanel, start, panel, minecraft, admin, management, simple, sleek, powerful free, open, source, opensource">
 
         <link href="/assets/css/grid.css" rel="stylesheet">
@@ -40,8 +46,8 @@
                     </div>
                     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navbar()">&#9776;</a>
                 </div>
-                <h1 class="text-white" style="margin-bottom:-16px;"><?php echo $page_name_final; ?></h1>
-                <p class="text-white"><?php echo $page_subhead_final; ?></p>
+                <h1 class="text-white" style="margin-bottom:-16px;"><?php echo $page_subhead_name_final; ?></h1>
+                <p class="text-white"><?php echo $page_subhead_text_final; ?></p>
             </div>
         </div>
         <br>
