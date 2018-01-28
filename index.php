@@ -15,7 +15,7 @@
 		</div>
 		<div class="col-4">
 			<h2>Powerful</h2>
-			<p>We keep our panel very powerful to make it stand up to the competition. We strive to provide what the competitors have and more. Our paenel may look basic, but it isn't at all.</p>
+			<p>We keep our panel very powerful to make it stand up to the competition. We strive to provide what the competitors have and more. Our panel may look basic, but it isn't at all.</p>
 		</div>
 	</div>
 </div>
