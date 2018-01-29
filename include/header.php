@@ -39,10 +39,10 @@
                 <div class="navbar" id="mainNavbar">
                     <a href="/" class="nav-item text-bold">StartPanel</a>
                     <a href="/" class="nav-item">Home</a>
-                    <a href="/docs/" class="nav-item">Docs</a>
+                    <a href="/docs/index.php" class="nav-item">Docs</a>
                     <div class="nav-right">
                         <a href="https://discord.gg/7P2AfvS" class="nav-item">Discord</a>
-                        <a href="/download/" class="nav-item">Download</a>
+                        <a href="/download.php" class="nav-item">Download</a>
                     </div>
                     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navbar()">&#9776;</a>
                 </div>
