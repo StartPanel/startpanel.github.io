@@ -1,6 +1,6 @@
 <?php
     $page_name = "Home";
-	$page_subhead = "The simple, sleek, and powerful Minecraft server management panel.";
+	$page_subhead = "The simple, sleek, and powerful server management panel.";
 	include './include/header.php';
 ?>
 <div class="container">
