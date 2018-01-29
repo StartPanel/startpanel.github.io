@@ -3,7 +3,7 @@
 	$page_subhead = "The simple, sleek, and powerful server management panel.";
 	include './include/header.php';
 ?>
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-4">
 			<h2>Simple</h2>
